@@ -10,6 +10,8 @@ public class PlayerBehavior : MonoBehaviour
     public float distanceToGround = 0.1f;
     public LayerMask groundLayer;
 
+    public bool doShoot;
+
     // 1
     public GameObject bullet;
     public float bulletSpeed = 100f;
@@ -31,6 +33,8 @@ public class PlayerBehavior : MonoBehaviour
     {
         vInput = Input.GetAxis("Vertical") * moveSpeed;
         hInput = Input.GetAxis("Horizontal") * rotateSpeed;
+        if (Input.GetMouseButtonDown(0))
+            doShoot = true;
     }
 
     void FixedUpdate()
@@ -52,11 +56,12 @@ public class PlayerBehavior : MonoBehaviour
         _rb.MoveRotation(_rb.rotation * angleRot);
 
         // 2
-        if (Input.GetMouseButtonDown(0))
+        if (doShoot)
         {
             // 3
+            doShoot = false;
             GameObject newBullet = Instantiate(bullet,
-               this.transform.position + new Vector3(1, 0, 0),
+               this.transform.position + this.transform.right,
                   this.transform.rotation) as GameObject;
 
             // 4

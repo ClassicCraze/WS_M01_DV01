@@ -16,7 +16,7 @@ public class EnemyBehavior : MonoBehaviour
      // 3
      private NavMeshAgent agent;
 
-    private int _lives = 3;
+    private int _lives = 1;
      public int EnemyLives 
      {
          // 2
