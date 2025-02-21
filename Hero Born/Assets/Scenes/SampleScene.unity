@@ -523,7 +523,7 @@ GameObject:
   - component: {fileID: 308950780}
   - component: {fileID: 308950779}
   - component: {fileID: 308950778}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}

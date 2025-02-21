@@ -79,7 +79,14 @@
  
 void OnGUI()
   {
-      // ... No other changes needed ...
+        GUI.Box(new Rect(20, 20, 150, 25), "Player Health:" +
+            _playerHP);
+
+         GUI.Box(new Rect(20, 50, 150, 25), "Items Collected: " +
+            _itemsCollected);
+
+         GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height -
+            50, 300, 50), labelText); 
  
       if (showWinScreen)
       {

@@ -12,6 +12,8 @@ public class PlayerBehavior : MonoBehaviour
 
     public bool doShoot;
 
+    private bool doJump;
+
     // 1
     public GameObject bullet;
     public float bulletSpeed = 100f;
@@ -35,15 +37,21 @@ public class PlayerBehavior : MonoBehaviour
         hInput = Input.GetAxis("Horizontal") * rotateSpeed;
         if (Input.GetMouseButtonDown(0))
             doShoot = true;
+        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space)){
+            doJump = true;
+            /* do the if statement and a bool */
+        }
+
     }
 
     void FixedUpdate()
     {
-        // 5
-        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
+        // 5  // if the bool is true
+        if (doJump)
         {
             _rb.AddForce(Vector3.up * jumpVelocity,
                 ForceMode.Impulse);
+            doJump = false;
         }
         Vector3 rotation = Vector3.up * hInput;
 
